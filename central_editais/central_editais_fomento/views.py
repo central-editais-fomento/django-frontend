@@ -1,32 +1,15 @@
-# -*- coding: utf-8 -*
 from django.http import HttpResponse
-from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
-from models import Editais
-from django.shortcuts import get_object_or_404
-from datetime import datetime
+from django.template import loader
+from .models import Edital
 
 def index(request):
-	editais = Editais.objects.all()
+	editais = Edital.objects.all()
 	context = {'editais': editais}
-	return render(request, 'index.html', context)
+	template = loader.get_template('central_editais_fomento/index.html')
+	return HttpResponse(template.render(context,request))
 
-# Comentei essa parte pois estava dando erro
+def busca(request):
+	return HttpResponse("Página de busca")
 
-# @rtr()
-#def index(request):
-#	editais = Editais.objects.all()
-# 	return locals()
-# #		return HttpResponse(u'Olá mundo!')
-
-# @rtr()
-#def busca(request):
-#	return locals()
-
-
-# @rtr()
-#def edital(request, edital_pk):
-#	edital = get_object_or_404(Editais, id=edital_pk)
-#	context = {'edital': edital}
-#	return render(request, 'edital.html', context)
-#	return locals()
+def edital(request, edital_id):
+	return HttpResponse("Página que mostra o edital %s" % edital_id)

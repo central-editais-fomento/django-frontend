@@ -1,16 +1,16 @@
-# -*- coding: utf-8 -*
-from __future__ import unicode_literals
-
 from django.db import models
 
 # Create your models here.
-class Editais(models.Model):
+class Edital(models.Model):
 	titulo	    = models.CharField(max_length=200)
 	resumo	    = models.CharField(max_length=1000)
 	texto	    = models.TextField()
 	data_limite	= models.DateField()
-	#TODO Futuramente areas e tipos devem ser transformados em modelos separados
-	# areas são as grandes areas do CNPQ
+	#TODO Futuramente talvez areas e tipos devam ser transformados em modelos separados
+	# areas são as areas do CNPQ
 	areas   = models.CharField(max_length=1000)
 	# tipos são os tipos de itens financiáveis: bolsas, eventos ou outros
 	tipos   = models.CharField(max_length=1000)
+
+	def __str__(self):
+		return self.titulo

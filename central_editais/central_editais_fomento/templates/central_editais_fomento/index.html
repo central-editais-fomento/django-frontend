@@ -1,0 +1,9 @@
+{% if editais %}
+    <ul>
+    {% for edital in editais %}
+        <li><a href="/central_editais_fomento/{{ edital.id }}/">{{ edital.titulo }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Nenhum edital cadastrado.</p>
+{% endif %}
