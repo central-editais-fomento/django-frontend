@@ -3,6 +3,7 @@ from django.template import loader
 from .models import Edital
 
 def index(request):
+    #TODO listar por padrão somente os editais abertos
 	editais = Edital.objects.all()
 	context = {'editais': editais}
 	template = loader.get_template('central_editais_fomento/index.html')
