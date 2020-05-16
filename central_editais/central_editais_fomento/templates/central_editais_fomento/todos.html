@@ -1,5 +1,5 @@
 {% if editais %}
-<p>Editais abertos</p>
+<p>Mostrando todos os editais</p>
     <ul>
     {% for edital in editais %}
         <li><a href="/central_editais_fomento/{{ edital.id }}/">{{ edital.titulo }}</a></li>
@@ -13,6 +13,7 @@
 
 Outras opções:
 <ul>
+    <li><a href="/central_editais_fomento/">Mostrar somente os editais abertos</a></li>
     <li><a href="/central_editais_fomento/todos">Mostrar todos os editais (inclusive encerrados)</a></li>
     <li><a href="/central_editais_fomento/busca">Busca de editais</a></li>
 </ul>

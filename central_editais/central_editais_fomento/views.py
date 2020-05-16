@@ -1,13 +1,18 @@
-from django.http import HttpResponse
-from django.template import loader
+#from django.http import HttpResponse
+#from django.template import loader
+from django.shortcuts import render
 from .models import Edital
 
 def index(request):
     #TODO listar por padrão somente os editais abertos
 	editais = Edital.objects.all()
 	context = {'editais': editais}
-	template = loader.get_template('central_editais_fomento/index.html')
-	return HttpResponse(template.render(context,request))
+	return render(request, 'central_editais_fomento/index.html', context)
+
+def todos(request):
+	editais = Edital.objects.all()
+	context = {'editais': editais}
+	return render(request, 'central_editais_fomento/todos.html', context)
 
 def busca(request):
 	return HttpResponse("Página de busca")
